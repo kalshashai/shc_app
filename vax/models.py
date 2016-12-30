@@ -67,7 +67,7 @@ class Child(models.Model):
     nationality = models.CharField(max_length=20, blank=False, null=False)
     gender = models.CharField(max_length =2, choices = GENDER, default = MALE)
     birth_date = models.DateTimeField()
-    status = models.CharField(max_length=2, blank=True, null=True)
+    status = models.CharField(max_length=2, blank=True, null=True, choices= STATUS)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     mother = models.ForeignKey('Mother', on_delete=models.CASCADE)
