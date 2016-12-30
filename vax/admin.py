@@ -1,9 +1,11 @@
 from django.contrib import admin
-from .models import Vaccine, Mother, Child, Appointment
+from .models import (
+    Vaccine, Mother, Child, Appointment, 
+    VaccineAdmin, MotherAdmin, ChildAdmin )
 
 # Register your models here.
 
-admin.site.register(Vaccine)
-admin.site.register(Mother)
-admin.site.register(Child)
+admin.site.register(Vaccine, VaccineAdmin)
+admin.site.register(Mother, MotherAdmin)
+admin.site.register(Child, ChildAdmin)
 admin.site.register(Appointment)
