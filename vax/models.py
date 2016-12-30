@@ -108,7 +108,7 @@ class Appointment(models.Model):
     ap_date = models.DateTimeField()
     ap_type = models.CharField(max_length=2, blank=True, null=True, choices= APP_TYPE, default= VACCINATION)
     ap_status = models.CharField(max_length=2, blank=True, null=True, choices= APP_STATUS, default= PLANNED)
-    ap_report = models.TextField()
+    ap_report = models.TextField(null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     child = models.ForeignKey('Child', on_delete=models.CASCADE)
