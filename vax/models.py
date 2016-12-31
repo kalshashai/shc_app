@@ -108,14 +108,20 @@ class Appointment(models.Model):
     ap_date = models.DateTimeField()
     ap_type = models.CharField(max_length=2, blank=True, null=True, choices= APP_TYPE, default= VACCINATION)
     ap_status = models.CharField(max_length=2, blank=True, null=True, choices= APP_STATUS, default= PLANNED)
-    ap_report = models.TextField(null=True)
+    ap_report = models.TextField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     child = models.ForeignKey('Child', on_delete=models.CASCADE)
-    vaccine = models.ForeignKey('Vaccine', on_delete=models.CASCADE, null=True)
+    vaccine = models.ForeignKey('Vaccine', on_delete=models.CASCADE, blank=True, null=True )
 
     def __str__(self):
-        return self.ap_type + '-' + self.ap_date
+        return self.child.fullname
+
+class AppointmentAdmin(admin.ModelAdmin):
+    list_display = ('ap_date', 'child', 'ap_type','ap_status','timestamp','updated')
+
+
+
 
 
 
