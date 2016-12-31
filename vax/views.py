@@ -9,3 +9,6 @@ def index(request):
     children = Child.objects.all()
     context = {'children': children}
     return render(request, 'vax/index.html',  context)
+
+def about(request):
+    return render(request, 'vax/about.html', {})
