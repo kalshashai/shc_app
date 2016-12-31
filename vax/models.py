@@ -123,6 +123,11 @@ class AppointmentAdmin(admin.ModelAdmin):
 
 
 
+class AppointmentAdmin(admin.ModelAdmin):
+    list_display = ('ap_date', 'child', 'ap_type', 'ap_status', 'updated' )
+
+
+
 
 
 
