@@ -117,6 +117,11 @@ class Appointment(models.Model):
     def __str__(self):
         return self.ap_type + '-' + self.ap_date
 
+class AppointmentAdmin(admin.ModelAdmin):
+    list_display = ('ap_date', 'child', 'ap_type', 'ap_status', 'updated' )
+
+
+
 
 
 
