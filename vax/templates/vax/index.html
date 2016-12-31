@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1>Children</h1>
+    </div>
+
+    
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>ID</th>
+          <th>Birth Date</th>
+          <th>Mother</th>
+          <th>Gender</th>
+          <th>Status</th>
+          <th>File No</th>
+          <th>MRN</th>
+          <th>Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+       
+          {% for child in children %}
+          <tr>
+          <td>{{ child.fullname }}</td>
+          <td>{{ child.national_id }}</td>
+          <td>{{ child.birth_date }}</td>
+          <td>{{ child.mother }}</td>
+          <td>{{ child.get_gender_display }}</td>
+          <td>{{ child.get_status_display }}</td>
+          <td>{{ child.file_no }}</td>
+          <td>{{ child.MRN }}</td>
+          <td>{{ child.updated }}</td>
+        </tr>
+          {% endfor %}
+       
+        
+      </tbody>
+    </table>
+    
+{% endblock content %}
