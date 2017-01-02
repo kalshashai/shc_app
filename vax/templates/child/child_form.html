@@ -1,17 +1,20 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
- 
-<form action="" method="POST" role="form"> {% csrf_token %}
-    <legend>Add a Child</legend>
+<div class="col-md-6 col-md-offset-3">
     
-    <div class="form-group">
-       {{ form.as_p }}
-    </div>
 
+<form action="" method="POST" role="form" > {% csrf_token %}
+    <legend>Add a Child</legend>
+   
+    <div class="form-group">
+       {{ form|crispy }}
+    </div>
+    
     <button type="submit" class="btn btn-primary">{% if 'add' in request.path %}Add a Child {% else %} Update {% endif%} </button>
 </form>
-
+</div>
 
 
 

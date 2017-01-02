@@ -66,7 +66,7 @@ class Child(models.Model):
     file_no = models.CharField(max_length=11, blank=True, null=True)
     nationality = models.CharField(max_length=20, blank=False, null=False)
     gender = models.CharField(max_length =2, choices = GENDER, default = MALE)
-    birth_date = models.DateTimeField()
+    birth_date = models.DateField()
     status = models.CharField(max_length=2, blank=True, null=True, choices= STATUS)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

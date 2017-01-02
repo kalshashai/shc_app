@@ -20,24 +20,22 @@ def child_show(request, id=None):
 def child_add(request):
     form = ChildForm(request.POST or None)
     if form.is_valid():
-        child = form.save(commit = False)
-        child.save()
+        instance = form.save(commit = False)
+        instance.save()
         return redirect('child_list')
 
     return render(request, 'child/child_form.html',  {"form": form})
 
 def child_edit(request, id=None):
-    child = get_object_or_404(Child, id=id)
-    form = ChildForm(request.POST or None, instance = child)
+    instance = get_object_or_404(Child, id=id)
+    form = ChildForm(request.POST or None, instance = instance)
     if form.is_valid():
-        child = form.save(commit = False)
-        child.save()
+        instance = form.save(commit = False)
+        instance.save()
         return redirect('child_list')
 
     return render(request, 'child/child_form.html',  {"form": form})
 
-def child_update(request):
-    return render(request, 'child/update.html',  {})
 
 def child_delete(request):
     return render(request, 'child/delete.html',  {})

@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.admin import widgets
+from html5.forms.widgets import DateInput
 
 from .models import (
     Vaccine, Mother, Child, Appointment
@@ -12,3 +14,6 @@ class ChildForm(forms.ModelForm):
             'MRN', 'file_no', 'nationality', 'gender', 'birth_date',
             'status', 'mother',
         ]
+        widgets = {
+            'birth_date' : DateInput
+        }

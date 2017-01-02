@@ -20,3 +20,4 @@ urlpatterns = [
     url(r'^', include('vax.urls')),
     url(r'^admin/', admin.site.urls),
 ]
+
