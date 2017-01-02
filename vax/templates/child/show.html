@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+   
+   <div class="jumbotron">
+        <h1>Show Child</h1>
+    </div>
+<ul> 
+          <li>{{ child.fullname }}</li>
+          <li>{{ child.national_id }}</li>
+          <li>{{ child.birth_date }}</li>
+          <li>{{ child.mother }}</li>
+          <li>{{ child.get_gender_display }}</li>
+          <li>{{ child.get_status_display }}</li>
+          <li>{{ child.file_no }}</li>
+          <li>{{ child.MRN }}</li>
+          <li>{{ child.updated }}</li>
+</ul>   
+
+{% endblock content %}

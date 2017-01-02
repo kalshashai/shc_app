@@ -21,7 +21,8 @@ urlpatterns = [
     url(r'^$', views.index, name = 'home'),
     url(r'^about/$', views.about, name = 'about'),
     url(r'^child/$', views.child_list, name = 'child_list'),
+    url(r'^child/(?P<id>\d+)/$', views.child_show, name = 'child_show'),
     url(r'^child/add$', views.child_add, name = 'child_add'),
-    url(r'^child/edit$', views.child_edit, name = 'child_edit'),
-
+    url(r'^child/(?P<id>\d+)/edit/$', views.child_edit, name = 'child_edit'),
+    url(r'^child/shodeletew$', views.child_delete, name = 'child_delete'),
 ]

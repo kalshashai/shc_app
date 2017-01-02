@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+ 
+<form action="" method="POST" role="form"> {% csrf_token %}
+    <legend>Add a Child</legend>
+    
+    <div class="form-group">
+       {{ form.as_p }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">{% if 'add' in request.path %}Add a Child {% else %} Update {% endif%} </button>
+</form>
+
+
+
+
+{% endblock content %}

@@ -24,7 +24,7 @@
        
           {% for child in children %}
           <tr>
-          <td>{{ child.fullname }}</td>
+          <td><a href="{% url 'child_show' child.id %}">{{ child.fullname }}</a></td>
           <td>{{ child.national_id }}</td>
           <td>{{ child.birth_date }}</td>
           <td>{{ child.mother }}</td>
