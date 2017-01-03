@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+   
+   <div class="jumbotron">
+        <h1>{{ mother.fullname }}</h1>
+    </div>
+   
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+        <tr>
+            <td><strong>First Name</strong></td>
+            <td>{{ mother.first_name }}</td>
+        </tr>
+         <tr>
+            <td><strong>Middle Name</strong></td>
+            <td>{{ mother.middle_name }}</td>
+        </tr>
+         <tr>
+            <td><strong>Last Name</strong></td>
+            <td>{{ mother.last_name }}</td>
+        </tr>
+         <tr>
+            <td><strong>National ID</strong></td>
+            <td>{{ mother.national_id }}</td>
+        </tr>
+         <tr>
+            <td><strong>Mobile #</strong></td>
+            <td>{{ mother.mobile }}</td>
+        </tr>
+       
+    </tbody>
+</table>
+
+
+{% endblock content %}
