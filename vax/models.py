@@ -36,6 +36,9 @@ class Mother(models.Model):
     def __str__(self):
         return self.fullname
 
+    def get_absolute_url(self):
+        return reverse('mother_show', kwargs={'pk': self.pk})
+
 class MotherAdmin(admin.ModelAdmin):
     list_display = ('fullname','national_id', 'mobile')
 
@@ -72,12 +75,20 @@ class Child(models.Model):
     updated = models.DateTimeField(auto_now=True)
     mother = models.ForeignKey('Mother', on_delete=models.CASCADE)
 
-    @property
+    editable_fields = ['first_name', 'middle_name', 'last_name', 'national_id', 'MRN',
+                        'file_no', 'nationality', 'gender', 'birth_date', 'status', 'mother']
+    
+    def my_fields(self):
+        return [(field.verbose_name, field.value_to_string(self)) for field in self._meta.fields]
+
     def fullname(self):
         return self.first_name + ' ' + self.middle_name + ' ' + self.last_name
 
     def __str__(self):
         return self.fullname
+
+    def get_absolute_url(self):
+        return reverse('child_show', kwargs={'pk': self.pk})
 
 class ChildAdmin(admin.ModelAdmin):
     list_display = ('fullname', 'national_id', 'nationality', 'birth_date')

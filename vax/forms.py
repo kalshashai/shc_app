@@ -17,3 +17,12 @@ class ChildForm(forms.ModelForm):
         widgets = {
             'birth_date' : DateInput
         }
+
+class MotherForm(forms.ModelForm):
+    class Meta:
+        model = Mother
+        fields = [
+             'first_name', 'middle_name', 'last_name',  'national_id',
+            'mobile'
+        ]
+       

@@ -3,18 +3,35 @@
 {% block content %}
    
    <div class="jumbotron">
-        <h1>Show Child</h1>
+        <h1>{{ child.fullname }}</h1>
     </div>
-<ul> 
-          <li>{{ child.fullname }}</li>
-          <li>{{ child.national_id }}</li>
-          <li>{{ child.birth_date }}</li>
-          <li>{{ child.mother }}</li>
-          <li>{{ child.get_gender_display }}</li>
-          <li>{{ child.get_status_display }}</li>
-          <li>{{ child.file_no }}</li>
-          <li>{{ child.MRN }}</li>
-          <li>{{ child.updated }}</li>
+<ul class="list-group"> 
+          <li class="list-group-item"><strong>National ID:</strong><t/> {{ child.national_id }}</li>
+          <li class="list-group-item"><strong>Birth Date:</strong><t/> {{ child.birth_date }}</li>
+          <li class="list-group-item"><strong>Mother:</strong><t/> {{ child.mother }}</li>
+          <li class="list-group-item"><strong>Gender:</strong><t/> {{ child.get_gender_display }}</li>
+          <li class="list-group-item"><strong>Status:</strong><t/> {{ child.get_status_display }}</li>
+          <li class="list-group-item"><strong>File Number:</strong><t/> {{ child.file_no }}</li>
+          <li class="list-group-item"><strong>MRN:</strong><t/> {{ child.MRN }}</li>
+          <li class="list-group-item"><strong>Updated:</strong><t/> {{ child.updated }}</li>
 </ul>   
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for name, value in child.my_fields %}
+        <tr>
+            <td>{{ name }}</td>
+            <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 
 {% endblock content %}

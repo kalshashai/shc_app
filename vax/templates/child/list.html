@@ -28,13 +28,22 @@
           <td><a href="{% url 'child_show' child.id %}">{{ child.fullname }}</a></td>
           <td>{{ child.national_id }}</td>
           <td>{{ child.birth_date }}</td>
-          <td>{{ child.mother }}</td>
+          <td><a href="{% url 'mother_show' child.mother.id %}">{{ child.mother }}</a></td>
           <td>{{ child.get_gender_display }}</td>
           <td>{{ child.get_status_display }}</td>
           <td>{{ child.file_no }}</td>
           <td>{{ child.MRN }}</td>
           <td>{{ child.updated }}</td>
-          <td align="center" > <a href="{% url 'child_edit' child.id %}"><span class="glyphicon glyphicon-pencil" aria-hidden="false"></span></a></td>
+          <td align="center" > 
+            <button type="submit" class="btn btn-default">
+              <a href="{% url 'child_update' child.id %}"><span class="glyphicon glyphicon-pencil" aria-hidden="false"></span></a>
+            </button>
+            <form action="{% url 'child_delete' child.pk %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-default"><span type="submit" class="glyphicon glyphicon-trash"></span></button>
+            </form>
+          
+          </td>
         </tr>
           {% endfor %}
        

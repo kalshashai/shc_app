@@ -20,9 +20,16 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name = 'home'),
     url(r'^about/$', views.about, name = 'about'),
-    url(r'^child/$', views.child_list, name = 'child_list'),
-    url(r'^child/(?P<id>\d+)/$', views.child_show, name = 'child_show'),
-    url(r'^child/add$', views.child_add, name = 'child_add'),
-    url(r'^child/(?P<id>\d+)/edit/$', views.child_edit, name = 'child_edit'),
-    url(r'^child/shodeletew$', views.child_delete, name = 'child_delete'),
+    #Child's
+    url(r'^child/$', views.ChildList.as_view() , name = 'child_list'),
+    url(r'^child/(?P<pk>\d+)/$', views.ChildDetail.as_view(), name = 'child_show'),
+    url(r'^child/add$', views.ChildCreate.as_view(), name = 'child_add'),
+    url(r'^child/(?P<pk>\d+)/edit/$', views.ChildUpdate.as_view(), name = 'child_update'),
+    url(r'^child/(?P<pk>\d+)/delete$', views.ChildDelete.as_view(), name = 'child_delete'),
+    #Mother
+    url(r'^mother/$', views.MotherList.as_view() , name = 'mother_list'),
+    url(r'^mother/(?P<pk>\d+)/$', views.MotherDetail.as_view(), name = 'mother_show'),
+    url(r'^mother/add$', views.MotherCreate.as_view(), name = 'mother_add'),
+    url(r'^mother/(?P<pk>\d+)/edit/$', views.MotherUpdate.as_view(), name = 'mother_update'),
+    url(r'^mother/(?P<pk>\d+)/delete$', views.MotherDelete.as_view(), name = 'mother_delete'),
 ]

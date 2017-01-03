@@ -53,18 +53,27 @@
             <ul class="nav navbar-nav">
               <li class="{% if request.path == '/' %} active {% endif %}"><a href="{% url 'home' %}">Home</a></li>
               <li class="{% if request.path == '/about/' %} active {% endif %}"><a href="{% url 'about' %}">About</a></li>
+              
+
               <li class="dropdown {% if 'child' in request.path  %} active {% endif %}" >
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Child <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Children <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li class="{% if request.path == '/child/' %} active {% endif %}"><a href="{% url 'child_list' %}">List</a></li>
-                  <li><a href="{% url 'child_add' %}">Add</a></li>
+                  <li class="{% if request.path == '/child/add' %} active {% endif %}"><a href="{% url 'child_add' %}">Add</a></li>
                   <li><a href="#">Reports</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
                 </ul>
               </li>
+
+              <li class="dropdown {% if 'mother' in request.path  %} active {% endif %}" >
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mothers <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li class="{% if request.path == '/mother/' %} active {% endif %}"><a href="{% url 'mother_list' %}">List</a></li>
+                  <li class="{% if request.path == '/mother/add' %} active {% endif %}"><a href="{% url 'mother_add' %}">Add</a></li>
+                  <li><a href="#">Reports</a></li>
+                </ul>
+              </li>
+
+              
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="../navbar-static-top/">Static top</a></li>

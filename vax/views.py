@@ -1,44 +1,68 @@
 from django.http import HttpResponse
+from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from html5.forms.widgets import DateInput
+
 from .models import (
     Vaccine, Mother, Child, Appointment
 )
-from .forms import ChildForm
+from .forms import ChildForm, MotherForm
 # Create your views here.
 def index(request):
     return render(request, 'vax/index.html',  {})
 
-def child_list(request):
-    children = Child.objects.all()
-    context = {'children': children}
-    return render(request, 'child/list.html',  context)
+#Child============================================
+class ChildList(ListView):
+    model = Child
+    context_object_name = 'children'
+    template_name='child/list.html'
 
-def child_show(request, id=None):
-    child = get_object_or_404(Child, id=id)
-    return render(request, 'child/show.html',  {"child": child})
+class ChildDetail(DetailView):
+    model = Child
+    template_name='child/show.html'
 
-def child_add(request):
-    form = ChildForm(request.POST or None)
-    if form.is_valid():
-        instance = form.save(commit = False)
-        instance.save()
-        return redirect('child_list')
+class ChildCreate(CreateView):
+    form_class = ChildForm
+    model = Child
+    template_name='child/child_form.html'
 
-    return render(request, 'child/child_form.html',  {"form": form})
+class ChildUpdate(UpdateView):
+    model = Child
+    form_class = ChildForm
+    template_name='child/child_form.html'
+    
+class ChildDelete(DeleteView):
+    model = Child
+    success_url = reverse_lazy('child_list')
+#End Child==========================================
 
-def child_edit(request, id=None):
-    instance = get_object_or_404(Child, id=id)
-    form = ChildForm(request.POST or None, instance = instance)
-    if form.is_valid():
-        instance = form.save(commit = False)
-        instance.save()
-        return redirect('child_list')
+#Mother=============================================
+class MotherList(ListView):
+    model = Mother
+    context_object_name = 'mothers'
+    template_name='mother/list.html'
 
-    return render(request, 'child/child_form.html',  {"form": form})
+class MotherDetail(DetailView):
+    model = Mother
+    template_name='Mother/show.html'
 
+class MotherCreate(CreateView):
+    form_class = MotherForm
+    model = Mother
+    template_name='mother/mother_form.html'
 
-def child_delete(request):
-    return render(request, 'child/delete.html',  {})
+class MotherUpdate(UpdateView):
+    model = Mother
+    form_class = MotherForm
+    template_name='mother/mother_form.html'
+    
+class MotherDelete(DeleteView):
+    model = Mother
+    success_url = reverse_lazy('Mother_list')
+
+#End Mother=========================================
 
 def about(request):
     return render(request, 'vax/about.html', {})
